@@ -47,7 +47,7 @@ Scripts and instructions for setting up ubuntu-server on rpi 3
 
     ```bash
     
-    nano /etc/ssh/sshd_config
+    sudo nano /etc/ssh/sshd_config
     
     CTR + o
     CTR + x
@@ -59,4 +59,13 @@ Scripts and instructions for setting up ubuntu-server on rpi 3
     ```
 
 1. Log back in as the new user. (see step 6.)
+
+At this point you have a freshly installed ubuntu server running on a Raspberry Pi  3.
+
+## NEXT STEPS
+
+2. Add ssh keys and set up ssh access
+2. Add and set up a firewall
+2. Install Docker and Docker compose
+
 
