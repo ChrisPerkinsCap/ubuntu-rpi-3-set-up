@@ -1,0 +1,4 @@
+# Ignore or exclude files and folders matching the following patterns
+
+.idea/
+*.iml
