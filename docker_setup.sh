@@ -32,6 +32,9 @@ function add_docker_secure_key() {
     echo "Plubic signature is a match.";
     echo "Downloaded: ${public_signature}";
     echo "Should be:  9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88";
+  else
+    echo "Docker inc GPG Signature doesn't match. Exiting!!!"
+    exit 1;
   fi
 }
 
