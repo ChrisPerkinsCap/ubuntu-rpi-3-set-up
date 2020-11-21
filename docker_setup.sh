@@ -25,15 +25,19 @@ function add_docker_secure_key() {
 
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-  public_signature="$(apt-key fingerprint 0EBFCD88 | grep '0EBF CD88')";
+  public_signature="$(apt-key fingerprint 0EBFCD88 | grep '0EBF CD88' | xargs)";
 
-  if [[ "${public_signature}" == "9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88" ]]
+  correct_key=$( echo "9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88" | xargs );
+
+  if [[ "${public_signature}" == "${correct_key}" ]]
   then
     echo "Plubic signature is a match.";
     echo "Downloaded: ${public_signature}";
-    echo "Should be:  9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88";
+    echo "Should be:  ${correct_key}";
   else
     echo "Docker inc GPG Signature doesn't match. Exiting!!!"
+    echo "Downloaded: ${public_signature}";
+    echo "Should be:  ${correct_key}";
     exit 1;
   fi
 }
