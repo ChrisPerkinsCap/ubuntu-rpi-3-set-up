@@ -4,29 +4,13 @@ unsername="${1}:-";
 create_user="n";
 is_root="1";
 
-source ./docker-setup-functions.sh
-
 source ./basic-setup-functions.sh
+
+apt-get update
 
 ask_create_user
 
 ask_make_root
-
-apt-get update
-
-prepare_node
-
-add_docker_secure_key
-
-add_docker_repo
-
-install_docker
-
-test_docker_install
-
-install_docker_compose
-
-test_docker_compose
 
 if [[ "${create_user}" == "y" ]] || [[ "${create_user}" == "Y" ]] ||
    [[ "${create_user}" == "Yes" ]] || [[ "${create_user}" == "yes" ]]
