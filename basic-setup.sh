@@ -1,6 +1,20 @@
 #!/bin/bash
 
-var unsername="${1}:-";
+unsername="${1}:-";
+create_user="n";
+is_root="1";
+
+function ask_create_user() {
+  echo "Do you whish to create a new user?"
+  echo "Please enter y / n :"
+  read -r create_user
+}
+
+function ask_make_root() {
+  echo "Do you want this user to have 'root' user privileges?"
+  echo "Please enter y / n :"
+  read -r is_root
+}
 
 function create_new_user() {
 
@@ -44,13 +58,9 @@ function disable_default_login() {
 
 apt-get update
 
-echo "Do you whish to create a new user?"
-echo "Please enter y / n :"
-read -r create_user
+ask_create_user
 
-echo "Do you want this user to have 'root' user privileges?"
-echo "Please enter y / n :"
-read -r is_root
+ask_make_root
 
 if [[ "${create_user}" == "y" ]] || [[ "${create_user}" == "Y" ]] || 
    [[ "${create_user}" == "Yes" ]] || [[ "${create_user}" == "yes" ]]
