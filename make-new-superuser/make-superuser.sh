@@ -4,7 +4,7 @@ unsername="${1}:-";
 create_user="n";
 is_root="1";
 
-source ./basic-setup-functions.sh
+source ./make-superuser-functions.sh
 
 apt-get update
 

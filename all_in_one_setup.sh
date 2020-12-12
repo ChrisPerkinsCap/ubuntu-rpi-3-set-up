@@ -6,7 +6,7 @@ is_root="1";
 
 source ./docker-setup-functions.sh
 
-source ./basic-setup-functions.sh
+source ./make-new-superuser/make-superuser-functions.sh
 
 ask_create_user
 
