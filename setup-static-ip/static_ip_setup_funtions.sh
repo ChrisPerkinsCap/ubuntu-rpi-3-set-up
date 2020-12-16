@@ -51,8 +51,11 @@ function set_network_conf_file() {
   if [[ "${network_manager}" == "netplan" ]] && [[ "${network_conf_path}" == "/etc/netplan" ]] &&
      [[ "$(ls -1 /etc/netplan/ | grep '50-cloud-init.yaml')" == "50-cloud-init.yaml" ]]; then
     network_conf_file=$(ls -1 /etc/netplan/ | grep '50-cloud-init.yaml');
+  elif [[ "${network_manager}" == "netplan" ]] && [[ "${network_conf_path}" == "/etc/netplan" ]] &&
+     [[ "$(ls -1 /etc/netplan/ | grep '00-installer-config.yaml')" == "00-installer-config.yaml" ]]; then
+    network_conf_file=$(ls -1 /etc/netplan/ | grep '50-cloud-init.yaml');
   elif [[ "${network_manager}" == "interfaces" ]] && [[ "${network_conf_path}" == "/etc/network" ]] &&
-       [[ "$(ls -1 /etc/network/ | grep 'interfaces')" == "interfaces" ]]; then
+     [[ "$(ls -1 /etc/network/ | grep 'interfaces')" == "interfaces" ]]; then
     network_conf_file=$(ls -1 /etc/network/ | grep 'interfaces');
   else
     network_conf_file=""
